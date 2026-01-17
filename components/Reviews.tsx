@@ -4,9 +4,40 @@ interface Review {
   author: string;
   text: string;
   date: string;
+  role?: string;
 }
 
 const reviews: Review[] = [
+  {
+    author: "Tami Olson",
+    role: "Realtor",
+    text: "We've used Joe's Junk Removal for multiple projects- they always do a great job and leave the area looking better than expected! Highly recommend!",
+    date: "2 weeks ago",
+  },
+  {
+    author: "Jackson O'Neill",
+    role: "Business Owner",
+    text: "Great experience using Joe for my personal property as well as recommending to some of my clients! Communicated quickly and appropriately to help me get tasks accomplished. 10/10",
+    date: "1 month ago",
+  },
+  {
+    author: "Larry Frye",
+    role: "Residential & Commercial Customer",
+    text: "He and crew are great, hard working, on time, very reasonable. I use him exclusively and would recommend him to everyone",
+    date: "3 weeks ago",
+  },
+  {
+    author: "Stephen De La Gardel",
+    role: "Residential Customer",
+    text: "I have had Joe's Junk Removal come clear clutter out of my garage and debris out of my yard multiple times. They are both quick and courteous. They always leave the place looking better than it was. They even removed a fallen tree for me. They are fairly priced as well! Often beating the prices of other removal services. I can practically call them for anything I need removed (trees, furniture, old tvs, trash in general). They even cleaned up the dog poop in my backyard. These guys are absolute legends!!!",
+    date: "1 month ago",
+  },
+  {
+    author: "Michael Price",
+    role: "Residential Customer",
+    text: "Had them remove a Hot Tub for me and haul it off. Fantastic Service. They do excellent work and show up on time & get the job done.",
+    date: "2 months ago",
+  },
   {
     author: "Sarah M.",
     text: "Joe and Duke were amazing! They showed up on time, worked quickly, and left my garage looking spotless. Highly recommend for anyone in Tucson!",
@@ -95,6 +126,9 @@ function ReviewCard({
           </div>
           <div>
             <p className="font-semibold text-foreground">{review.author}</p>
+            {review.role && (
+              <p className="text-xs text-muted-foreground">{review.role}</p>
+            )}
             <p className="text-xs text-muted-foreground">{review.date}</p>
           </div>
         </div>
