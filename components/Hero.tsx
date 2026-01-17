@@ -1,10 +1,11 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { buttonVariants } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
 
-const PHONE_NUMBER = "(520) 555-JUNK"
+const PHONE_NUMBER = "(520) 555-JUNK";
 
 function Hero({ className, ...props }: React.ComponentProps<"section">) {
   return (
@@ -12,7 +13,7 @@ function Hero({ className, ...props }: React.ComponentProps<"section">) {
       data-slot="hero"
       className={cn(
         "relative min-h-screen flex items-center justify-center overflow-hidden",
-        className
+        className,
       )}
       {...props}
     >
@@ -20,27 +21,30 @@ function Hero({ className, ...props }: React.ComponentProps<"section">) {
       <div className="absolute inset-0 z-0">
         <div
           data-slot="hero-background-placeholder"
-          className="w-full h-full bg-gradient-to-br from-secondary/90 via-secondary/70 to-primary/40 flex items-center justify-center"
+          className="flex justify-center items-center w-full h-full bg-gradient-to-br from-secondary/90 via-secondary/70 to-primary/40"
         >
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+CjxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgZmlsbD0ibm9uZSIvPgo8Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIxIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMSkiLz4KPC9zdmc+')] opacity-30" />
-          <span className="text-white/20 text-xl font-medium tracking-wide">
-            [Tucson Arizona Background Image]
-          </span>
+          <Image
+            src="/hero-image.avif"
+            className="object-cover object-center absolute w-full h-full"
+            alt="Tucson Arizona Background Image"
+            width={1920}
+            height={1080}
+          />
         </div>
         {/* Overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/30" />
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-4xl mx-auto space-y-8">
+      <div className="container relative z-10 px-4 mx-auto text-center sm:px-6 lg:px-8">
+        <div className="mx-auto space-y-8 max-w-4xl">
           {/* Main Headline */}
-          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white text-shadow-lg tracking-wide leading-none">
+          <h1 className="text-5xl tracking-wide leading-none text-white sm:text-6xl md:text-7xl lg:text-8xl font-display text-shadow-lg">
             QUALITY JUNK REMOVAL
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg sm:text-xl md:text-2xl text-white/90 text-shadow max-w-3xl mx-auto leading-relaxed">
+          <p className="mx-auto max-w-3xl text-lg leading-relaxed sm:text-xl md:text-2xl text-white/90 text-shadow">
             At Joe&apos;s Junk Removal LLC, we specialize in efficient and
             reliable junk removal services for residential and commercial
             spaces. Let us take care of your unwanted items, leaving your space
@@ -53,7 +57,7 @@ function Hero({ className, ...props }: React.ComponentProps<"section">) {
               href={`tel:${PHONE_NUMBER.replace(/\D/g, "")}`}
               className={cn(
                 buttonVariants({ size: "lg" }),
-                "text-lg px-8 py-6 h-auto font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+                "text-lg px-8 py-6 h-auto font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105",
               )}
             >
               Call {PHONE_NUMBER} Today!
@@ -61,8 +65,8 @@ function Hero({ className, ...props }: React.ComponentProps<"section">) {
           </div>
 
           {/* Trust Badge */}
-          <div className="pt-6 flex flex-wrap items-center justify-center gap-6 text-white/80 text-sm">
-            <div className="flex items-center gap-2">
+          <div className="flex flex-wrap gap-6 justify-center items-center pt-6 text-sm text-white/80">
+            <div className="flex gap-2 items-center">
               <svg
                 className="w-5 h-5 text-primary"
                 fill="currentColor"
@@ -76,7 +80,7 @@ function Hero({ className, ...props }: React.ComponentProps<"section">) {
               </svg>
               <span>Family Owned</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex gap-2 items-center">
               <svg
                 className="w-5 h-5 text-primary"
                 fill="currentColor"
@@ -90,7 +94,7 @@ function Hero({ className, ...props }: React.ComponentProps<"section">) {
               </svg>
               <span>Licensed & Insured</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex gap-2 items-center">
               <svg
                 className="w-5 h-5 text-primary"
                 fill="currentColor"
@@ -109,7 +113,7 @@ function Hero({ className, ...props }: React.ComponentProps<"section">) {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 z-10 animate-bounce -translate-x-1/2">
         <svg
           className="w-6 h-6 text-white/60"
           fill="none"
@@ -125,7 +129,7 @@ function Hero({ className, ...props }: React.ComponentProps<"section">) {
         </svg>
       </div>
     </section>
-  )
+  );
 }
 
-export { Hero, PHONE_NUMBER }
+export { Hero, PHONE_NUMBER };
