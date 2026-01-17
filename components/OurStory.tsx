@@ -1,12 +1,10 @@
-"use client"
-
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
 interface Owner {
-  name: string
-  role: string
-  bio: string
+  name: string;
+  role: string;
+  bio: string;
 }
 
 const owners: Owner[] = [
@@ -17,10 +15,10 @@ const owners: Owner[] = [
   },
   {
     name: "Duke McAllister",
-    role: "Co-Owner & Operations",
+    role: "Tell me the role pls",
     bio: "Joe's newly married brother-in-law and invaluable partner, Duke ensures every project runs smoothly and efficiently.",
   },
-]
+];
 
 function OwnerCard({
   owner,
@@ -30,19 +28,16 @@ function OwnerCard({
   return (
     <div
       data-slot="owner-card"
-      className={cn(
-        "group text-center space-y-4",
-        className
-      )}
+      className={cn("group text-center space-y-4", className)}
       {...props}
     >
       {/* Photo Placeholder */}
       <div
         data-slot="owner-photo-placeholder"
-        className="w-48 h-48 sm:w-56 sm:h-56 mx-auto rounded-full bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center shadow-xl ring-4 ring-primary/20 group-hover:ring-primary/40 transition-all duration-300 overflow-hidden"
+        className="flex overflow-hidden justify-center items-center mx-auto w-48 h-48 bg-gradient-to-br rounded-full ring-4 shadow-xl transition-all duration-300 sm:w-56 sm:h-56 from-muted to-muted/50 ring-primary/20 group-hover:ring-primary/40"
       >
-        <div className="w-full h-full flex items-center justify-center bg-secondary/5">
-          <span className="text-muted-foreground/50 text-sm font-medium">
+        <div className="flex justify-center items-center w-full h-full bg-secondary/5">
+          <span className="text-sm font-medium text-muted-foreground/50">
             [Photo]
           </span>
         </div>
@@ -50,14 +45,14 @@ function OwnerCard({
 
       {/* Info */}
       <div className="space-y-2">
-        <h3 className="font-display text-3xl tracking-wide text-foreground">
+        <h3 className="text-3xl tracking-wide font-display text-foreground">
           {owner.name.toUpperCase()}
         </h3>
-        <p className="text-primary font-semibold">{owner.role}</p>
-        <p className="text-muted-foreground max-w-xs mx-auto">{owner.bio}</p>
+        <p className="font-semibold text-primary">{owner.role}</p>
+        <p className="mx-auto max-w-xs text-muted-foreground">{owner.bio}</p>
       </div>
     </div>
-  )
+  );
 }
 
 function OurStory({ className, ...props }: React.ComponentProps<"section">) {
@@ -66,24 +61,24 @@ function OurStory({ className, ...props }: React.ComponentProps<"section">) {
       data-slot="our-story"
       className={cn(
         "py-20 sm:py-28 bg-gradient-to-b from-muted/50 to-background",
-        className
+        className,
       )}
       {...props}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container px-4 mx-auto sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl tracking-wide text-foreground mb-4">
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <h2 className="mb-4 text-4xl tracking-wide sm:text-5xl md:text-6xl font-display text-foreground">
             OUR STORY
           </h2>
-          <div className="w-24 h-1 bg-primary mx-auto mb-8" />
+          <div className="mx-auto mb-8 w-24 h-1 bg-primary" />
 
           {/* Story Text */}
-          <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
             <p>
-              <span className="text-foreground font-semibold">Joe Fautz</span>{" "}
+              <span className="font-semibold text-foreground">Joe Fautz</span>{" "}
               is the owner and founder of Joe&apos;s Junk Removal. A{" "}
-              <span className="text-primary font-semibold">
+              <span className="font-semibold text-primary">
                 family-owned business
               </span>{" "}
               established in 2022, we are committed to providing top-notch junk
@@ -91,7 +86,7 @@ function OurStory({ className, ...props }: React.ComponentProps<"section">) {
             </p>
             <p>
               Working alongside his invaluable newly married brother-in-law{" "}
-              <span className="text-foreground font-semibold">
+              <span className="font-semibold text-foreground">
                 Duke McAllister
               </span>
               , they have a focus on{" "}
@@ -99,7 +94,7 @@ function OurStory({ className, ...props }: React.ComponentProps<"section">) {
               <span className="text-primary">appliance removal</span>, and{" "}
               <span className="text-primary">hoarding clean-up</span>.
             </p>
-            <p className="text-foreground font-medium">
+            <p className="font-medium text-foreground">
               Together, we ensure prompt and high-quality solutions for our
               customers.
             </p>
@@ -107,16 +102,19 @@ function OurStory({ className, ...props }: React.ComponentProps<"section">) {
         </div>
 
         {/* Owners */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-12 sm:gap-16 lg:gap-24">
+        <div className="flex flex-col gap-12 justify-center items-center sm:flex-row sm:gap-16 lg:gap-24">
           {owners.map((owner) => (
-            <OwnerCard key={owner.name} owner={owner} />
+            <OwnerCard
+              key={owner.name}
+              owner={owner}
+            />
           ))}
         </div>
 
         {/* Values */}
-        <div className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div className="text-center space-y-3">
-            <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center">
+        <div className="grid grid-cols-1 gap-8 mx-auto mt-20 max-w-4xl sm:grid-cols-3">
+          <div className="space-y-3 text-center">
+            <div className="flex justify-center items-center mx-auto w-16 h-16 rounded-full bg-primary/10">
               <svg
                 className="w-8 h-8 text-primary"
                 fill="none"
@@ -131,14 +129,16 @@ function OurStory({ className, ...props }: React.ComponentProps<"section">) {
                 />
               </svg>
             </div>
-            <h4 className="font-display text-xl tracking-wide">FAMILY VALUES</h4>
-            <p className="text-muted-foreground text-sm">
+            <h4 className="text-xl tracking-wide font-display">
+              FAMILY VALUES
+            </h4>
+            <p className="text-sm text-muted-foreground">
               We treat your property like our own
             </p>
           </div>
 
-          <div className="text-center space-y-3">
-            <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center">
+          <div className="space-y-3 text-center">
+            <div className="flex justify-center items-center mx-auto w-16 h-16 rounded-full bg-primary/10">
               <svg
                 className="w-8 h-8 text-primary"
                 fill="none"
@@ -153,14 +153,16 @@ function OurStory({ className, ...props }: React.ComponentProps<"section">) {
                 />
               </svg>
             </div>
-            <h4 className="font-display text-xl tracking-wide">PROMPT SERVICE</h4>
-            <p className="text-muted-foreground text-sm">
+            <h4 className="text-xl tracking-wide font-display">
+              PROMPT SERVICE
+            </h4>
+            <p className="text-sm text-muted-foreground">
               Quick response and efficient work
             </p>
           </div>
 
-          <div className="text-center space-y-3">
-            <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center">
+          <div className="space-y-3 text-center">
+            <div className="flex justify-center items-center mx-auto w-16 h-16 rounded-full bg-primary/10">
               <svg
                 className="w-8 h-8 text-primary"
                 fill="none"
@@ -175,15 +177,15 @@ function OurStory({ className, ...props }: React.ComponentProps<"section">) {
                 />
               </svg>
             </div>
-            <h4 className="font-display text-xl tracking-wide">QUALITY WORK</h4>
-            <p className="text-muted-foreground text-sm">
+            <h4 className="text-xl tracking-wide font-display">QUALITY WORK</h4>
+            <p className="text-sm text-muted-foreground">
               Top-notch results, every time
             </p>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export { OurStory }
+export { OurStory };

@@ -1,12 +1,9 @@
-"use client"
-
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 interface Service {
-  title: string
-  description: string
-  icon: React.ReactNode
+  title: string;
+  description: string;
+  icon: React.ReactNode;
 }
 
 const services: Service[] = [
@@ -90,7 +87,7 @@ const services: Service[] = [
       </svg>
     ),
   },
-]
+];
 
 function ServiceCard({
   service,
@@ -102,40 +99,40 @@ function ServiceCard({
       data-slot="service-card"
       className={cn(
         "group relative bg-card rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2",
-        className
+        className,
       )}
       {...props}
     >
       {/* Image Placeholder */}
       <div
         data-slot="service-image-placeholder"
-        className="aspect-[4/3] bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center relative overflow-hidden"
+        className="flex overflow-hidden relative justify-center items-center bg-gradient-to-br aspect-[4/3] from-muted to-muted/50"
       >
-        <div className="absolute inset-0 bg-secondary/10 group-hover:bg-primary/10 transition-colors duration-500" />
-        <span className="text-muted-foreground/50 text-sm font-medium z-10">
+        <div className="absolute inset-0 transition-colors duration-500 bg-secondary/10 group-hover:bg-primary/10" />
+        <span className="z-10 text-sm font-medium text-muted-foreground/50">
           [Service Image]
         </span>
       </div>
 
       {/* Content */}
       <div className="p-6 space-y-4">
-        <div className="flex items-center gap-3">
+        <div className="flex gap-3 items-center">
           <div className="p-2 rounded-lg bg-primary/10 text-primary">
             {service.icon}
           </div>
-          <h3 className="font-display text-2xl tracking-wide text-foreground">
+          <h3 className="text-2xl tracking-wide font-display text-foreground">
             {service.title.toUpperCase()}
           </h3>
         </div>
-        <p className="text-muted-foreground leading-relaxed">
+        <p className="leading-relaxed text-muted-foreground">
           {service.description}
         </p>
       </div>
 
       {/* Accent border on hover */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+      <div className="absolute right-0 bottom-0 left-0 h-1 transition-transform duration-500 origin-left scale-x-0 group-hover:scale-x-100 bg-primary" />
     </div>
-  )
+  );
 }
 
 function Services({ className, ...props }: React.ComponentProps<"section">) {
@@ -145,13 +142,13 @@ function Services({ className, ...props }: React.ComponentProps<"section">) {
       className={cn("py-20 sm:py-28 bg-background", className)}
       {...props}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container px-4 mx-auto sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl tracking-wide text-foreground mb-4">
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <h2 className="mb-4 text-4xl tracking-wide sm:text-5xl md:text-6xl font-display text-foreground">
             OUR SERVICES
           </h2>
-          <div className="w-24 h-1 bg-primary mx-auto mb-6" />
+          <div className="mx-auto mb-6 w-24 h-1 bg-primary" />
           <p className="text-lg text-muted-foreground">
             From small cleanups to large-scale removals, we handle it all with
             professionalism and care.
@@ -159,14 +156,17 @@ function Services({ className, ...props }: React.ComponentProps<"section">) {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {services.map((service) => (
-            <ServiceCard key={service.title} service={service} />
+            <ServiceCard
+              key={service.title}
+              service={service}
+            />
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export { Services }
+export { Services };

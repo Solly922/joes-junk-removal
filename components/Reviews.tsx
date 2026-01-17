@@ -1,12 +1,9 @@
-"use client"
-
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 interface Review {
-  author: string
-  text: string
-  date: string
+  author: string;
+  text: string;
+  date: string;
 }
 
 const reviews: Review[] = [
@@ -35,7 +32,7 @@ const reviews: Review[] = [
     text: "Joe helped us clean out my late father's house. They were compassionate, respectful, and did an incredible job. Can't thank them enough.",
     date: "2 months ago",
   },
-]
+];
 
 function StarIcon({ filled = true }: { filled?: boolean }) {
   return (
@@ -46,12 +43,15 @@ function StarIcon({ filled = true }: { filled?: boolean }) {
     >
       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
     </svg>
-  )
+  );
 }
 
 function GoogleIcon() {
   return (
-    <svg className="w-6 h-6" viewBox="0 0 24 24">
+    <svg
+      className="w-6 h-6"
+      viewBox="0 0 24 24"
+    >
       <path
         fill="#4285F4"
         d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -69,7 +69,7 @@ function GoogleIcon() {
         d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
       />
     </svg>
-  )
+  );
 }
 
 function ReviewCard({
@@ -82,15 +82,15 @@ function ReviewCard({
       data-slot="review-card"
       className={cn(
         "bg-card rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col",
-        className
+        className,
       )}
       {...props}
     >
       {/* Header */}
-      <div className="flex items-start justify-between mb-4">
-        <div className="flex items-center gap-3">
+      <div className="flex justify-between items-start mb-4">
+        <div className="flex gap-3 items-center">
           {/* Avatar */}
-          <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-semibold">
+          <div className="flex justify-center items-center w-10 h-10 font-semibold rounded-full bg-primary/20 text-primary">
             {review.author.charAt(0)}
           </div>
           <div>
@@ -104,16 +104,19 @@ function ReviewCard({
       {/* Stars */}
       <div className="flex gap-0.5 mb-3">
         {[...Array(5)].map((_, i) => (
-          <StarIcon key={i} filled />
+          <StarIcon
+            key={i}
+            filled
+          />
         ))}
       </div>
 
       {/* Review Text */}
-      <p className="text-muted-foreground leading-relaxed flex-1">
+      <p className="flex-1 leading-relaxed text-muted-foreground">
         &ldquo;{review.text}&rdquo;
       </p>
     </div>
-  )
+  );
 }
 
 function Reviews({ className, ...props }: React.ComponentProps<"section">) {
@@ -123,48 +126,57 @@ function Reviews({ className, ...props }: React.ComponentProps<"section">) {
       className={cn("py-20 sm:py-28 bg-secondary/5", className)}
       {...props}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container px-4 mx-auto sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl tracking-wide text-foreground mb-4">
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <h2 className="mb-4 text-4xl tracking-wide sm:text-5xl md:text-6xl font-display text-foreground">
             WHAT OUR CUSTOMERS SAY
           </h2>
-          <div className="w-24 h-1 bg-primary mx-auto mb-6" />
+          <div className="mx-auto mb-6 w-24 h-1 bg-primary" />
 
           {/* Rating Summary */}
-          <div className="flex items-center justify-center gap-4 mb-4">
+          <div className="flex gap-4 justify-center items-center mb-4">
             <div className="flex gap-1">
               {[...Array(5)].map((_, i) => (
-                <StarIcon key={i} filled />
+                <StarIcon
+                  key={i}
+                  filled
+                />
               ))}
             </div>
             <span className="text-2xl font-bold text-foreground">5.0</span>
           </div>
-          <p className="text-muted-foreground flex items-center justify-center gap-2">
+          <p className="flex gap-2 justify-center items-center text-muted-foreground">
             <GoogleIcon />
             Based on Google Reviews
           </p>
         </div>
 
         {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {reviews.slice(0, 3).map((review) => (
-            <ReviewCard key={review.author} review={review} />
+            <ReviewCard
+              key={review.author}
+              review={review}
+            />
           ))}
         </div>
 
         {/* Additional Reviews Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 gap-6 mx-auto mt-6 max-w-4xl md:grid-cols-2">
           {reviews.slice(3, 5).map((review) => (
-            <ReviewCard key={review.author} review={review} />
+            <ReviewCard
+              key={review.author}
+              review={review}
+            />
           ))}
         </div>
 
         {/* CTA to Google */}
-        <div className="text-center mt-12">
+        <div className="mt-12 text-center">
           <a
             href="#"
-            className="inline-flex items-center gap-2 text-primary font-semibold hover:underline"
+            className="inline-flex gap-2 items-center font-semibold hover:underline text-primary"
           >
             See all reviews on Google
             <svg
@@ -184,7 +196,7 @@ function Reviews({ className, ...props }: React.ComponentProps<"section">) {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export { Reviews }
+export { Reviews };

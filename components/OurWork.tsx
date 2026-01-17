@@ -1,7 +1,4 @@
-"use client"
-
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 // Placeholder data for work gallery
 const workImages = [
@@ -13,7 +10,7 @@ const workImages = [
   { id: 6, alt: "Construction debris removal" },
   { id: 7, alt: "Estate cleanout project" },
   { id: 8, alt: "Backyard debris hauling" },
-]
+];
 
 function WorkImage({
   image,
@@ -21,8 +18,8 @@ function WorkImage({
   className,
   ...props
 }: React.ComponentProps<"div"> & {
-  image: { id: number; alt: string }
-  size?: "default" | "large"
+  image: { id: number; alt: string };
+  size?: "default" | "large";
 }) {
   return (
     <div
@@ -30,24 +27,24 @@ function WorkImage({
       className={cn(
         "group relative overflow-hidden rounded-xl bg-gradient-to-br from-muted to-muted/50 cursor-pointer",
         size === "large" ? "aspect-square md:aspect-[4/3]" : "aspect-square",
-        className
+        className,
       )}
       {...props}
     >
       {/* Image Placeholder */}
-      <div className="absolute inset-0 flex items-center justify-center bg-secondary/5 group-hover:bg-primary/10 transition-colors duration-300">
-        <span className="text-muted-foreground/50 text-sm font-medium text-center px-4">
+      <div className="flex absolute inset-0 justify-center items-center transition-colors duration-300 bg-secondary/5 group-hover:bg-primary/10">
+        <span className="px-4 text-sm font-medium text-center text-muted-foreground/50">
           [Project Image {image.id}]
         </span>
       </div>
 
       {/* Hover Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-        <p className="text-white text-sm font-medium">{image.alt}</p>
+      <div className="flex absolute inset-0 items-end p-4 bg-gradient-to-t to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 from-black/80 via-black/20">
+        <p className="text-sm font-medium text-white">{image.alt}</p>
       </div>
 
       {/* Zoom Icon */}
-      <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <div className="flex absolute top-4 right-4 justify-center items-center w-10 h-10 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-white/20 backdrop-blur-sm">
         <svg
           className="w-5 h-5 text-white"
           fill="none"
@@ -63,7 +60,7 @@ function WorkImage({
         </svg>
       </div>
     </div>
-  )
+  );
 }
 
 function OurWork({ className, ...props }: React.ComponentProps<"section">) {
@@ -73,13 +70,13 @@ function OurWork({ className, ...props }: React.ComponentProps<"section">) {
       className={cn("py-20 sm:py-28 bg-background", className)}
       {...props}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container px-4 mx-auto sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl tracking-wide text-foreground mb-4">
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <h2 className="mb-4 text-4xl tracking-wide sm:text-5xl md:text-6xl font-display text-foreground">
             OUR WORK
           </h2>
-          <div className="w-24 h-1 bg-primary mx-auto mb-6" />
+          <div className="mx-auto mb-6 w-24 h-1 bg-primary" />
           <p className="text-lg text-muted-foreground">
             See the difference we make. Check out some of our recent projects
             and transformations.
@@ -87,7 +84,7 @@ function OurWork({ className, ...props }: React.ComponentProps<"section">) {
         </div>
 
         {/* Gallery Grid - Masonry-style layout */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
           {/* First row - 2 regular + 1 large */}
           <WorkImage image={workImages[0]} />
           <WorkImage image={workImages[1]} />
@@ -110,12 +107,12 @@ function OurWork({ className, ...props }: React.ComponentProps<"section">) {
         </div>
 
         {/* Before/After Indicator */}
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-muted-foreground">
-          <div className="flex items-center gap-2">
+        <div className="flex flex-wrap gap-8 justify-center items-center mt-12 text-sm text-muted-foreground">
+          <div className="flex gap-2 items-center">
             <div className="w-4 h-4 rounded bg-destructive/30" />
             <span>Before</span>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex gap-2 items-center">
             <div className="w-4 h-4 rounded bg-accent" />
             <span>After</span>
           </div>
@@ -124,7 +121,7 @@ function OurWork({ className, ...props }: React.ComponentProps<"section">) {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export { OurWork }
+export { OurWork };

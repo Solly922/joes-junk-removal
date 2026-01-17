@@ -1,28 +1,29 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { buttonVariants } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
-import { PHONE_NUMBER } from "./Hero"
+import { useEffect, useState } from "react";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { PHONE_NUMBER } from "./Hero";
+import Link from "next/link";
 
 function Header({ className, ...props }: React.ComponentProps<"header">) {
-  const [isScrolled, setIsScrolled] = React.useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
     { href: "#services", label: "Services" },
     { href: "#story", label: "Our Story" },
     { href: "#reviews", label: "Reviews" },
     { href: "#work", label: "Our Work" },
-  ]
+  ];
 
   return (
     <header
@@ -32,20 +33,23 @@ function Header({ className, ...props }: React.ComponentProps<"header">) {
         isScrolled
           ? "bg-background/95 backdrop-blur-md shadow-lg py-3"
           : "bg-transparent py-5",
-        className
+        className,
       )}
       {...props}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+      <div className="container px-4 mx-auto sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-3 group">
+          <Link
+            href="/"
+            className="flex gap-3 items-center group"
+          >
             <div
               className={cn(
                 "w-10 h-10 rounded-lg flex items-center justify-center font-display text-xl transition-colors duration-300",
                 isScrolled
                   ? "bg-primary text-primary-foreground"
-                  : "bg-white/20 backdrop-blur-sm text-white"
+                  : "bg-white/20 backdrop-blur-sm text-white",
               )}
             >
               JJ
@@ -53,27 +57,27 @@ function Header({ className, ...props }: React.ComponentProps<"header">) {
             <div
               className={cn(
                 "hidden sm:block transition-colors duration-300",
-                isScrolled ? "text-foreground" : "text-white"
+                isScrolled ? "text-foreground" : "text-white",
               )}
             >
-              <span className="font-display text-xl tracking-wide block leading-none">
+              <span className="block text-xl tracking-wide leading-none font-display">
                 JOE&apos;S JUNK
               </span>
               <span className="text-xs tracking-widest opacity-80">
                 REMOVAL LLC
               </span>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden gap-8 items-center md:flex">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 className={cn(
                   "text-sm font-medium transition-colors duration-300 hover:text-primary",
-                  isScrolled ? "text-foreground" : "text-white/90"
+                  isScrolled ? "text-foreground" : "text-white/90",
                 )}
               >
                 {link.label}
@@ -88,7 +92,7 @@ function Header({ className, ...props }: React.ComponentProps<"header">) {
               className={cn(
                 buttonVariants({ size: "sm" }),
                 "transition-all duration-300",
-                !isScrolled && "shadow-lg"
+                !isScrolled && "shadow-lg",
               )}
             >
               {PHONE_NUMBER}
@@ -102,7 +106,7 @@ function Header({ className, ...props }: React.ComponentProps<"header">) {
               "md:hidden p-2 rounded-lg transition-colors duration-300",
               isScrolled
                 ? "text-foreground hover:bg-muted"
-                : "text-white hover:bg-white/20"
+                : "text-white hover:bg-white/20",
             )}
             aria-label="Toggle menu"
           >
@@ -135,13 +139,13 @@ function Header({ className, ...props }: React.ComponentProps<"header">) {
         <div
           className={cn(
             "md:hidden overflow-hidden transition-all duration-300",
-            isMobileMenuOpen ? "max-h-80 mt-4" : "max-h-0"
+            isMobileMenuOpen ? "max-h-80 mt-4" : "max-h-0",
           )}
         >
           <nav
             className={cn(
               "flex flex-col gap-2 p-4 rounded-xl",
-              isScrolled ? "bg-muted" : "bg-white/10 backdrop-blur-md"
+              isScrolled ? "bg-muted" : "bg-white/10 backdrop-blur-md",
             )}
           >
             {navLinks.map((link) => (
@@ -153,7 +157,7 @@ function Header({ className, ...props }: React.ComponentProps<"header">) {
                   "px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-300",
                   isScrolled
                     ? "text-foreground hover:bg-background"
-                    : "text-white hover:bg-white/20"
+                    : "text-white hover:bg-white/20",
                 )}
               >
                 {link.label}
@@ -171,7 +175,7 @@ function Header({ className, ...props }: React.ComponentProps<"header">) {
         </div>
       </div>
     </header>
-  )
+  );
 }
 
-export { Header }
+export { Header };

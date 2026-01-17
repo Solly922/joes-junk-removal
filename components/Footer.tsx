@@ -1,26 +1,26 @@
-"use client"
-
-import * as React from "react"
-import { buttonVariants } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
-import { PHONE_NUMBER } from "./Hero"
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { PHONE_NUMBER } from "./Hero";
 
 function Footer({ className, ...props }: React.ComponentProps<"footer">) {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer
       data-slot="footer"
-      className={cn("bg-secondary text-secondary-foreground outline-none", className)}
+      className={cn(
+        "bg-secondary text-secondary-foreground outline-none",
+        className,
+      )}
       {...props}
     >
       {/* CTA Section */}
-      <div className="bg-primary py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl tracking-wide text-primary-foreground mb-4">
+      <div className="py-16 bg-primary">
+        <div className="container px-4 mx-auto text-center sm:px-6 lg:px-8">
+          <h2 className="mb-4 text-3xl tracking-wide sm:text-4xl md:text-5xl font-display text-primary-foreground">
             READY TO CLEAR THE CLUTTER?
           </h2>
-          <p className="text-primary-foreground/80 text-lg mb-8 max-w-2xl mx-auto">
+          <p className="mx-auto mb-8 max-w-2xl text-lg text-primary-foreground/80">
             Get a free estimate today. We&apos;ll handle the heavy lifting so
             you don&apos;t have to.
           </p>
@@ -28,7 +28,7 @@ function Footer({ className, ...props }: React.ComponentProps<"footer">) {
             href={`tel:${PHONE_NUMBER.replace(/\D/g, "")}`}
             className={cn(
               buttonVariants({ variant: "secondary", size: "lg" }),
-              "text-lg px-8 py-6 h-auto font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+              "text-lg px-8 py-6 h-auto font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105",
             )}
           >
             Call {PHONE_NUMBER}
@@ -38,16 +38,16 @@ function Footer({ className, ...props }: React.ComponentProps<"footer">) {
 
       {/* Main Footer */}
       <div className="py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="container px-4 mx-auto sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
             {/* Company Info */}
             <div className="lg:col-span-2">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center font-display text-2xl text-primary-foreground">
+              <div className="flex gap-3 items-center mb-6">
+                <div className="flex justify-center items-center w-12 h-12 text-2xl rounded-lg bg-primary font-display text-primary-foreground">
                   JJ
                 </div>
                 <div>
-                  <span className="font-display text-2xl tracking-wide block leading-none">
+                  <span className="block text-2xl tracking-wide leading-none font-display">
                     JOE&apos;S JUNK
                   </span>
                   <span className="text-sm tracking-widest opacity-80">
@@ -55,7 +55,7 @@ function Footer({ className, ...props }: React.ComponentProps<"footer">) {
                   </span>
                 </div>
               </div>
-              <p className="text-secondary-foreground/80 max-w-md mb-6">
+              <p className="mb-6 max-w-md text-secondary-foreground/80">
                 A family-owned junk removal business serving Tucson, Arizona and
                 surrounding areas. We specialize in residential and commercial
                 cleanup, appliance removal, yard waste disposal, and hoarding
@@ -64,7 +64,7 @@ function Footer({ className, ...props }: React.ComponentProps<"footer">) {
               <div className="flex gap-4">
                 <a
                   href="#"
-                  className="w-10 h-10 rounded-full bg-secondary-foreground/10 hover:bg-primary hover:text-primary-foreground flex items-center justify-center transition-colors duration-300"
+                  className="flex justify-center items-center w-10 h-10 rounded-full transition-colors duration-300 bg-secondary-foreground/10 hover:bg-primary hover:text-primary-foreground"
                   aria-label="Facebook"
                 >
                   <svg
@@ -77,7 +77,7 @@ function Footer({ className, ...props }: React.ComponentProps<"footer">) {
                 </a>
                 <a
                   href="#"
-                  className="w-10 h-10 rounded-full bg-secondary-foreground/10 hover:bg-primary hover:text-primary-foreground flex items-center justify-center transition-colors duration-300"
+                  className="flex justify-center items-center w-10 h-10 rounded-full transition-colors duration-300 bg-secondary-foreground/10 hover:bg-primary hover:text-primary-foreground"
                   aria-label="Instagram"
                 >
                   <svg
@@ -90,10 +90,14 @@ function Footer({ className, ...props }: React.ComponentProps<"footer">) {
                 </a>
                 <a
                   href="#"
-                  className="w-10 h-10 rounded-full bg-secondary-foreground/10 hover:bg-primary hover:text-primary-foreground flex items-center justify-center transition-colors duration-300"
+                  className="flex justify-center items-center w-10 h-10 rounded-full transition-colors duration-300 bg-secondary-foreground/10 hover:bg-primary hover:text-primary-foreground"
                   aria-label="Google"
                 >
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <svg
+                    className="w-5 h-5"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
                     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                     <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
                     <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
@@ -105,14 +109,14 @@ function Footer({ className, ...props }: React.ComponentProps<"footer">) {
 
             {/* Quick Links */}
             <div>
-              <h3 className="font-display text-xl tracking-wide mb-6">
+              <h3 className="mb-6 text-xl tracking-wide font-display">
                 QUICK LINKS
               </h3>
               <ul className="space-y-3">
                 <li>
                   <a
                     href="#services"
-                    className="text-secondary-foreground/80 hover:text-primary transition-colors duration-300"
+                    className="transition-colors duration-300 text-secondary-foreground/80 hover:text-primary"
                   >
                     Our Services
                   </a>
@@ -120,7 +124,7 @@ function Footer({ className, ...props }: React.ComponentProps<"footer">) {
                 <li>
                   <a
                     href="#story"
-                    className="text-secondary-foreground/80 hover:text-primary transition-colors duration-300"
+                    className="transition-colors duration-300 text-secondary-foreground/80 hover:text-primary"
                   >
                     About Us
                   </a>
@@ -128,7 +132,7 @@ function Footer({ className, ...props }: React.ComponentProps<"footer">) {
                 <li>
                   <a
                     href="#reviews"
-                    className="text-secondary-foreground/80 hover:text-primary transition-colors duration-300"
+                    className="transition-colors duration-300 text-secondary-foreground/80 hover:text-primary"
                   >
                     Reviews
                   </a>
@@ -136,7 +140,7 @@ function Footer({ className, ...props }: React.ComponentProps<"footer">) {
                 <li>
                   <a
                     href="#work"
-                    className="text-secondary-foreground/80 hover:text-primary transition-colors duration-300"
+                    className="transition-colors duration-300 text-secondary-foreground/80 hover:text-primary"
                   >
                     Our Work
                   </a>
@@ -146,13 +150,13 @@ function Footer({ className, ...props }: React.ComponentProps<"footer">) {
 
             {/* Contact Info */}
             <div>
-              <h3 className="font-display text-xl tracking-wide mb-6">
+              <h3 className="mb-6 text-xl tracking-wide font-display">
                 CONTACT US
               </h3>
               <ul className="space-y-4">
-                <li className="flex items-start gap-3">
+                <li className="flex gap-3 items-start">
                   <svg
-                    className="w-5 h-5 text-primary mt-0.5 shrink-0"
+                    className="mt-0.5 w-5 h-5 text-primary shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -165,20 +169,20 @@ function Footer({ className, ...props }: React.ComponentProps<"footer">) {
                     />
                   </svg>
                   <div>
-                    <p className="text-secondary-foreground/80 text-sm">
+                    <p className="text-sm text-secondary-foreground/80">
                       Phone
                     </p>
                     <a
                       href={`tel:${PHONE_NUMBER.replace(/\D/g, "")}`}
-                      className="text-secondary-foreground hover:text-primary transition-colors duration-300 font-semibold"
+                      className="font-semibold transition-colors duration-300 text-secondary-foreground hover:text-primary"
                     >
                       {PHONE_NUMBER}
                     </a>
                   </div>
                 </li>
-                <li className="flex items-start gap-3">
+                <li className="flex gap-3 items-start">
                   <svg
-                    className="w-5 h-5 text-primary mt-0.5 shrink-0"
+                    className="mt-0.5 w-5 h-5 text-primary shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -197,17 +201,17 @@ function Footer({ className, ...props }: React.ComponentProps<"footer">) {
                     />
                   </svg>
                   <div>
-                    <p className="text-secondary-foreground/80 text-sm">
+                    <p className="text-sm text-secondary-foreground/80">
                       Service Area
                     </p>
-                    <p className="text-secondary-foreground font-semibold">
+                    <p className="font-semibold text-secondary-foreground">
                       Tucson, AZ & Surrounding Areas
                     </p>
                   </div>
                 </li>
-                <li className="flex items-start gap-3">
+                <li className="flex gap-3 items-start">
                   <svg
-                    className="w-5 h-5 text-primary mt-0.5 shrink-0"
+                    className="mt-0.5 w-5 h-5 text-primary shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -220,10 +224,10 @@ function Footer({ className, ...props }: React.ComponentProps<"footer">) {
                     />
                   </svg>
                   <div>
-                    <p className="text-secondary-foreground/80 text-sm">
+                    <p className="text-sm text-secondary-foreground/80">
                       Hours
                     </p>
-                    <p className="text-secondary-foreground font-semibold">
+                    <p className="font-semibold text-secondary-foreground">
                       Mon-Sat: 7AM - 6PM
                     </p>
                   </div>
@@ -235,9 +239,9 @@ function Footer({ className, ...props }: React.ComponentProps<"footer">) {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-secondary-foreground/10 py-6">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-secondary-foreground/60">
+      <div className="py-6 border-t border-secondary-foreground/10">
+        <div className="container px-4 mx-auto sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-4 justify-between items-center text-sm sm:flex-row text-secondary-foreground/60">
             <p>
               &copy; {currentYear} Joe&apos;s Junk Removal LLC. All rights
               reserved.
@@ -247,7 +251,7 @@ function Footer({ className, ...props }: React.ComponentProps<"footer">) {
         </div>
       </div>
     </footer>
-  )
+  );
 }
 
-export { Footer }
+export { Footer };
